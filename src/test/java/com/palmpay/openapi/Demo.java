@@ -28,25 +28,25 @@ public class Demo {
      // 2.加签
         String privateKey = null;
         String publicKey = null;
+        HashMap<String, Object> newHashMap = new HashMap<>();
+        newHashMap.put("requestTime",1662171389940L);
+        newHashMap.put("version","V1.1");
+        newHashMap.put("nonceStr","IBJGAeTa4ZJQv4Z2qufomVo9eI1YnJ9Y");
+        newHashMap.put("amount", 200);
+        newHashMap.put("currency", "NGN");
+        newHashMap.put("notifyUrl", "https://xx.cn/callback/payment");
+        newHashMap.put("orderId", "testc9ffae997fc4");
+        newHashMap.put("title", "pay");
+        newHashMap.put("transType", "24");
+        newHashMap.put("userId", "110");
+        newHashMap.put("country", "NG");
+        newHashMap.put("orderType", "1");
 
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("keyword", null);
-        hashMap.put("templateCode", "1002");
-        hashMap.put("serviceSign", null);
-        hashMap.put("applicantDepartment", null);
-        hashMap.put("businessScenario", null);
-        hashMap.put("threshold", null);
-        hashMap.put("dataType", null);
-        hashMap.put("pageNum", 1);
-        hashMap.put("pageSize", 10);
-        hashMap.put("requestTime", 1662171389940L);
-        hashMap.put("version", "V1.1");
-        hashMap.put("nonceStr", "IBJGAeTa4ZJQv4Z2qufomVo9eI1YnJ9Y");
 
-        String sign = PalmPayUtil.generateSign(hashMap, privateKey, SignType.RSA);
+        String sign = PalmPayUtil.generateSign(newHashMap, privateKey, SignType.RSA);
         System.out.println("sign： "+sign);
         // 3.验签
-        boolean result = PalmPayUtil.verifySign(hashMap, publicKey, sign, SignType.RSA);
+        boolean result = PalmPayUtil.verifySign(newHashMap, publicKey, sign, SignType.RSA);
 
         Assert.assertTrue(result);
     }
