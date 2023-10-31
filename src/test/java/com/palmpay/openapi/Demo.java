@@ -16,18 +16,15 @@ public class Demo {
     @Test
     public void test() throws Exception {
         // 1.生成密钥对
-//        Map<String, String> keyPair = RsaUtil.generateKeyPair();
-//        String privateKey = keyPair.get(Constants.PRIVATE_KEY);
-//        String publicKey = keyPair.get(Constants.PUBLIC_KEY);
+        Map<String, String> keyPair = RsaUtil.generateKeyPair();
+        String privateKey = keyPair.get(Constants.PRIVATE_KEY);
+        String publicKey = keyPair.get(Constants.PUBLIC_KEY);
 
-//        System.out.println("privateKey:");
-//        System.out.println(privateKey);
-//        System.out.println("publicKey:");
-//        System.out.println(publicKey);
-
+        System.out.println("privateKey:");
+        System.out.println(privateKey);
+        System.out.println("publicKey:");
+        System.out.println(publicKey);
      // 2.加签
-        String privateKey = null;
-        String publicKey = null;
         HashMap<String, Object> newHashMap = new HashMap<>();
         newHashMap.put("requestTime",1662171389940L);
         newHashMap.put("version","V1.1");
