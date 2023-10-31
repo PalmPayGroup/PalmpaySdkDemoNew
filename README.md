@@ -1,1 +1,6 @@
-# PalmpaySdkDemoV2
+# PalmpaySdkDemoNew
+switch branch [v2-master](./v2-master)
+
+com.palmpay.openapi.Demo.test
+
+
