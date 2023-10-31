@@ -43,7 +43,8 @@ public class RsaUtil {
      */
     private static final int MAX_DECRYPT_BLOCK = 128;
 
-    private static final int KEY_SIZE = 1024;
+
+    private static final int KEY_SIZE = 2048;
 	
     /**
      * 生成秘钥对
