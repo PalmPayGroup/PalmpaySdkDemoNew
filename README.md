@@ -1,4 +1,4 @@
 # PalmpaySdkDemo
-[java version](./java)
+[v2-master](./v2-master)
 
-com.palmpay.openapi.Demo.testSdk
+com.palmpay.openapi.Demo.test
