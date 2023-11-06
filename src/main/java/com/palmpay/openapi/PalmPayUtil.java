@@ -1,6 +1,9 @@
 package com.palmpay.openapi;
 
 
+import com.alibaba.fastjson.JSON;
+
+import java.net.URLDecoder;
 import java.security.SecureRandom;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -98,7 +101,27 @@ public class PalmPayUtil {
     	}
     	return verifySignature(map, publicKey, sign, signType);
     }
-    
+
+	/**
+	 * 回调接口验签逻辑
+	 * @param publicKey PalmPay平台公钥，不是商户自己生成的公钥
+	 * @return
+	 */
+	public static boolean verifySignForCallback(String paramBodyJson,String publicKey,SignType signType) throws Exception {
+		Map<String, String> data = JSON.parseObject(paramBodyJson, Map.class);
+		Set<String> set = data.keySet();
+		if(SignType.RSA.equals(signType)){
+			for (String key : set) {
+				data.put(key,String.valueOf(data.get(key)));
+			}
+		}
+		String sign = data.get("sign");
+		sign =  URLDecoder.decode(sign,"UTF-8");
+		data.remove("sign");
+		return verifySignature(data,publicKey,sign,signType);
+	}
+
+
 	/**
 	 * 生成签名
 	 * @param data Map<String, String>
